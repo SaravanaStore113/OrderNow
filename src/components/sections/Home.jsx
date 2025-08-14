@@ -86,7 +86,7 @@ export const Home = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <a
-              href="#projects"
+              href="#LuckyDraw"
               className="relative bg-green-600/90 text-white hover:text-white py-3 sm:py-3 px-6 sm:px-8 font-medium transition-all duration-300 
               hover:bg-green-500 hover:shadow-lg group overflow-hidden rounded-lg text-sm sm:text-base"
             >

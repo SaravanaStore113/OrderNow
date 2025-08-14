@@ -121,8 +121,8 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base text-green-300">Phone</h4>
-                    <a href="tel:9551380284" className="text-white hover:text-green-300 transition text-sm sm:text-base font-medium">
-                      +91 9551380824
+                    <a href="tel:93606 81036" className="text-white hover:text-green-300 transition text-sm sm:text-base font-medium">
+                      +91 93606 81036
                     </a>
                   </div>
                 </div>

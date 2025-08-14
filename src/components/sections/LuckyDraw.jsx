@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
-import { FaGift, FaTicketAlt, FaWhatsapp, FaCoins, FaHistory, FaCamera } from "react-icons/fa";
+import { FaGift, FaTicketAlt, FaWhatsapp, FaCoins, FaHistory } from "react-icons/fa";
 import { GiSpinningWheel } from "react-icons/gi";
 
 export const LuckyDraw = () => {
   const prizes = [
     "₹50 Voucher",
     "Free Delivery",
-    "Buy 1 Get 1 Free",
     "₹100 Voucher",
-    "Mystery Box",
+    "Better luck next time",
     "10% Off",
     "₹200 Voucher",
-    "20% Off"
   ];
 
   const [result, setResult] = useState(null);
@@ -25,7 +23,7 @@ export const LuckyDraw = () => {
     phone: ""
   });
 
-  // Load from localStorage
+  // Load data from localStorage
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('luckyDrawData')) || {};
     setSpinCount(savedData.spinCount || 0);
@@ -33,7 +31,7 @@ export const LuckyDraw = () => {
     setHistory(savedData.history || []);
   }, []);
 
-  // Save to localStorage
+  // Save data to localStorage
   useEffect(() => {
     localStorage.setItem('luckyDrawData', JSON.stringify({
       spinCount, 
@@ -47,15 +45,15 @@ export const LuckyDraw = () => {
     
     setSpinning(true);
     setResult(null);
-    
+
     setTimeout(() => {
       const randomIndex = Math.floor(Math.random() * prizes.length);
       const prize = prizes[randomIndex];
-      
+
       setResult(prize);
       const newSpinCount = spinCount + 1;
       setSpinCount(newSpinCount);
-      
+
       setHistory(prev => [
         {
           prize,
@@ -64,7 +62,7 @@ export const LuckyDraw = () => {
         },
         ...prev
       ].slice(0, 10));
-      
+
       setSpinning(false);
 
       if (newSpinCount >= 2) {
@@ -85,19 +83,22 @@ export const LuckyDraw = () => {
       `Total Bill: ₹${totalBill.toFixed(2)}\n` +
       `Spins Used: ${spinCount}\n\n` +
       `Please attach your bill photo below`;
-    
-    window.open(`https://wa.me/919551380284?text=${encodeURIComponent(message)}`, '_blank');
+
+    window.open(`https://wa.me/919360681036?text=${encodeURIComponent(message)}`, '_blank');
     setShowSubmission(false);
   };
 
   const resetSession = () => {
     setTotalBill(0);
     setSpinCount(0);
+    setHistory([]);
+    setShowSubmission(false);
+    setCustomerDetails({ name: "", phone: "" });
     localStorage.removeItem('luckyDrawData');
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
+    <div id="LuckyDraw" className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-md mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -226,7 +227,7 @@ export const LuckyDraw = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-gray-300 text-sm mb-1">Phone*</label>
+                    <label className="block text-gray-300 text-sm mb-1">Phone Number*</label>
                     <input
                       type="tel"
                       value={customerDetails.phone}
@@ -236,39 +237,26 @@ export const LuckyDraw = () => {
                     />
                   </div>
                 </div>
-                
-                <div className="mb-4 text-center text-sm text-gray-300">
-                  <FaCamera className="inline-block text-2xl mb-2" />
-                  <p>Please attach your bill photo in WhatsApp</p>
-                </div>
-                
+
                 <button
                   onClick={handleBillSubmission}
-                  className="w-full bg-green-600 hover:bg-green-500 py-2 rounded flex items-center justify-center gap-2 mb-2"
+                  className="w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded mb-2 flex justify-center items-center gap-2"
                 >
-                  <FaWhatsapp /> Open WhatsApp
+                  <FaWhatsapp /> Submit via WhatsApp
                 </button>
-                
+
                 <button
-                  onClick={() => setShowSubmission(false)}
-                  className="w-full text-gray-400 hover:text-white text-sm"
+                  onClick={resetSession}
+                  className="w-full bg-red-600 hover:bg-red-500 text-white py-2 rounded"
                 >
-                  Cancel
+                  Reset Session
                 </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* Reset Button */}
-        <button
-          onClick={resetSession}
-          className="text-gray-400 hover:text-yellow-400 text-sm underline"
-        >
-          Reset Session
-        </button>
       </div>
     </div>
   );
 };
-

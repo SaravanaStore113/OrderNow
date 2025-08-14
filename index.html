@@ -2,18 +2,59 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Update the favicon link -->
-    <link rel="icon" type="image/png" href="/src/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SARAVANA PROVISION</title>
+
+    <!-- Favicon (Trolley Icon) -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/891/891462.png" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NVZ DESIGN & BUILD</title>
+
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      header img {
+        height: 80px;
+        width: auto;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin: 0;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
+    <header>
+      <!-- Trolley logo for provision store -->
+      <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Saravana Provision Logo" />
+      <h1>SARAVANA PROVISION</h1>
+    </header>
+
+    <!-- React root element -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
